@@ -1,20 +1,16 @@
 <?php 
-	require_once "../../model/connection.php";
-	require_once "../../model/Users.php";
+	require_once "../../classes/connection.php";
+	require_once "../../classes/users.php";
 	
-	$obj= new Users();
+	$obj= new users();
 
-	$pass=sha1($_POST['password']);
-	$createdUser="Example User";
-	//$currentDate=date("Y-m-d H:i:s");
+	$password=sha1($_POST['password']);
 	
 	$data=array(
-		$_POST['user'],
 		$_POST['email'],
-		$_POST['employee'],
-		$_POST['role'],
-		$pass,
-		$createdUser
+		$_POST['first_name'],
+		$_POST['last_name'],
+		$password
 				);
 	echo $obj->userRegister($data);
 
