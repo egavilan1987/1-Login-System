@@ -6,23 +6,16 @@
 			$connection=$c->connection();
 
 
-			$sql="INSERT INTO users (user_name,
+			$sql="INSERT INTO users (
 							email,
-							full_name,
-							user_role,
 							password,
-							status,
-							image,
-							created_by_user,
+							first_name,
+							last_name,
 							created_date)
 						VALUES ('$data[0]',
 							'$data[1]',
 							'$data[2]',
 							'$data[3]',
-							'$data[4]',
-							'Inactive',
-							'../../files/profile_images/default-avatar.jpg',
-							'$data[5]',
 							 NOW())";
 
 			return mysqli_query($connection,$sql);
