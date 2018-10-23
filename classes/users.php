@@ -1,5 +1,5 @@
 <?php 
-	class Users{
+	class users{
 		public function userRegister($data){
 			
 			$c=new Connect();
@@ -115,40 +115,7 @@
 						);
 			return $userData;
 		}
-		public function updateUser($data){
-			
-			$c=new Connect();
-			$connection=$c->connection();
 
-			
-			$sql="UPDATE users SET user_name='$data[1]',
-						email='$data[2]',
-						full_name='$data[3]',
-						user_role='$data[4]',
-						status='$data[5]',
-						updated_by_user = 'adminUserExample',
-						updated_date=NOW()
-						WHERE id_user='$data[0]'";
-
-
-
-			return mysqli_query($connection,$sql);	
-		}
-
-		public function updateImage($data){
-			
-			$c=new Connect();
-			$connection=$c->connection();
-
-			
-			$sql="UPDATE users SET image='$data[1]',
-						updated_date=NOW()
-						WHERE id_user='$data[0]'";
-
-
-
-			return mysqli_query($connection,$sql);	
-		}
 		public function updatePassword($data){
 			
 			$c=new Connect();
@@ -163,15 +130,6 @@
 
 
 			return mysqli_query($connection,$sql);	
-		}
-		public function deleteUser($idUser){
-			
-			$c=new Connect();
-			$connection=$c->connection();
-			
-			$sql="DELETE FROM users 
-					WHERE id_user='$idUser'";
-			return mysqli_query($connection,$sql);
 		}
 
 		public function checkPassword($data){
