@@ -69,38 +69,23 @@
 			$connection=$c->connection();
 			
 			$sql="SELECT id_user,
-					user_name,
 					email,
-					full_name,
-					user_role,
-					status,
-					image,
-					created_by_user,
-					created_date,
-					updated_by_user,
-					updated_date
+					first_name,
+					last_name,
+					created_date
 					FROM users
 					WHERE id_user='$idUser'";
 					
 			$result=mysqli_query($connection,$sql);
 			
 			$row=mysqli_fetch_row($result);
-
-			$showImage=explode("/", $row[6]) ; 
-            $imgPath=$showImage[1]."/".$showImage[2]."/".$showImage[3]."/".$showImage[4];
 			
 			$userData=array(
 						'id_user' => $row[0],
-						'user_name' => $row[1],
-						'email' => $row[2],
-						'full_name' => $row[3],
-						'user_role' => $row[4],
-						'status' => $row[5],
-						'imagePath' => $imgPath,
-						'created_by_user' => $row[7],
-						'created_date' => $row[8],
-						'updated_by_user' => $row[9],
-						'updated_date' => $row[10]
+						'email' => $row[1],
+						'first_name' => $row[2],
+						'last_name' => $row[3],
+						'created_date' => $row[4]
 						);
 			return $userData;
 		}
@@ -111,9 +96,7 @@
 			$connection=$c->connection();
 
 			
-			$sql="UPDATE users SET password='$data[1]',
-								   updated_by_user = '$data[2]',
-								   updated_date=NOW()
+			$sql="UPDATE users SET password='$data[1]', updated_date=NOW()
 						WHERE id_user='$data[0]'";
 
 
