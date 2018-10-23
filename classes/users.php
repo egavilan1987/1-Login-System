@@ -26,27 +26,23 @@
 			$connection=$c->connection();
 			
 			$password=sha1($inform[1]);
-			$_SESSION['user']=$inform[0];
+			$_SESSION['email']=$inform[0];
 			$_SESSION['iduser']=self::bringID($inform);
 
 			$sql="SELECT * 
 					FROM users 
-				WHERE user_name='$inform[0]'
+				WHERE email='$inform[0]'
 				AND password='$password'";
 
 			$result=mysqli_query($connection,$sql);
 			$row=mysqli_fetch_row($result);
 
-				$showImage=explode("/", $row[7]);
-				$imgPath=$showImage[1]."/".$showImage[2]."/".$showImage[3]."/".$showImage[4];
-
-				$_SESSION['email']=$row[2];
-				$_SESSION['fullName']=$row[3];
-				$_SESSION['imagePath']=$imgPath;
-				$_SESSION['role']=$row[4];
-				$_SESSION['status']=$row[6];					
+				$_SESSION['email']=$row[0];
+				$_SESSION['first_name']=$row[1];
+				$_SESSION['last_name']=$row[2];
+				$_SESSION['created_date']=$row[3];					
 			
-			if(mysqli_num_rows($result) > 0 AND $row[6]=='Active'){
+			if(mysqli_num_rows($result) > 0){
 				return 1;
 			}
 			else{
@@ -62,7 +58,7 @@
 			
 			$sql="SELECT id_user 
 					FROM users 
-					WHERE user_name='$inform[0]'
+					WHERE email='$inform[0]'
 					AND password='$password'"; 
 			$result=mysqli_query($connection,$sql);
 			return mysqli_fetch_row($result)[0];
