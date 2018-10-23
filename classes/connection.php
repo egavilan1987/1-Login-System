@@ -4,7 +4,7 @@
 		private $server="localhost";
 		private $user="root";
 		private $password="";
-		private $db="administrator";
+		private $db="login";
 		public function connection(){
 			$connection=mysqli_connect($this->server,
 									 $this->user,
