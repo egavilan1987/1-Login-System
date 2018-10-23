@@ -1,12 +1,12 @@
 <?php 
 	session_start();
-	require_once "../../model/connection.php";
-	require_once "../../model/Users.php";
+	require_once "../../classes/connection.php";
+	require_once "../../classes/users.php";
 	
 	$obj= new Users();
 
 	$loginData=array(
-		$_POST['user'],
+		$_POST['email'],
 		$_POST['password']
 	);
 
