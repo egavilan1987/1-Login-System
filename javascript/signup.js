@@ -1,14 +1,18 @@
 $(function() {
 
-  var error_username = false;
   var error_email = false;
+  var error_firstname = false;
+  var error_lastname = false;
   var error_password = false;
   var error_retype_password = false;
 
-  $("#username").focusout(function() {
-      check_username();
+    $("#firstname").focusout(function() {
+      check_firstname();
     });
-   $("#email").focusout(function() {
+    $("#lastname").focusout(function() {
+        check_lastname();
+      });
+    $("#email").focusout(function() {
       check_email();
     });
     $("#password").focusout(function() {
@@ -18,25 +22,25 @@ $(function() {
       check_password_confirmation();
     });
 
-    function check_username() {
+    function check_firstname() {
 
-    var username_length = $("#username").val().length;
+    var firstname_length = $("#firstname").val().length;
 
-    if( $.trim( $('#username').val() ) == '' ){
-      $("#username_error_message").html("Input is blank!");
-      $("#username_error_message").show();
-      error_username = true;
-      username.style.border = "1px solid red";
-      }else if(username_length < 5 || username_length > 20) {
-      $("#username_error_message").html("Should be between 5-20 characters");
-      $("#username_error_message").show();
-      error_username = true;
-      username.style.border = "1px solid red";
-      $("#username_error_message").show();
-      error_username = true;
+    if( $.trim( $('#firstname').val() ) == '' ){
+      $("#firstname_error_message").html("Input is blank!");
+      $("#firstname_error_message").show();
+      error_firstname = true;
+      firstname.style.border = "1px solid red";
+      }else if(firstname_length < 5 || firstname_length > 20) {
+      $("#firstname_error_message").html("Should be between 5-20 characters");
+      $("#firstname_error_message").show();
+      error_firstname = true;
+      firstname.style.border = "1px solid red";
+      $("#firstname_error_message").show();
+      error_firstname = true;
       }else{
-      $("#username_error_message").hide();
-      username.style.border = "1px solid #ccc";
+      $("#firstname_error_message").hide();
+      firstname.style.border = "1px solid #ccc";
     }
 
   }
@@ -93,18 +97,18 @@ $(function() {
       }
       $('#btnAddUsers').click(function(){
 
-        error_username = false;
+
         error_email = false;
         error_password = false;
         error_retype_password = false;
 
-        check_username();
+
         check_email();
         check_password();
         check_password_confirmation();
 
 
-      if(error_username == false && error_email == false && error_password == false && error_retype_password == false) {
+      if(error_email == false && error_password == false && error_retype_password == false) {
           $("#alert_error_message").hide();
           data=$('#frmAddUsers').serialize();
           $.ajax({
